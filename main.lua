@@ -6,12 +6,11 @@ local function fail(content) return ya.notify { title = "Git files", content = c
 
 local function entry()
     local root = root()
-    -- local output, err = Command("git"):cwd(tostring(root)):arg({ "diff", "--name-only", "HEAD" }):output()
     local output, err = Command("git"):cwd(tostring(root)):arg({ "status", "--porcelain" }):output()
     if err then
-        return fail("Failed to run `git diff`, error: " .. err)
+        return fail("Failed to run `git status --porcelain`, error: " .. err)
     elseif not output.status.success then
-        return fail("Failed to run `git diff`, stderr: " .. output.stderr)
+        return fail("Failed to run `git status --porcelain`, stderr: " .. output.stderr)
     end
 
     local id = ya.id("ft")
