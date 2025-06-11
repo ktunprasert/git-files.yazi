@@ -6,7 +6,7 @@ local function fail(content) return ya.notify { title = "Git files", content = c
 
 local function entry()
     local root = root()
-    local output, err = Command("git"):cwd(tostring(root)):arg({ "status", "--porcelain", "**/**" }):output()
+    local output, err = Command("git"):cwd(tostring(root)):arg({ "status", "--porcelain", "-u" }):output()
     if err then
         return fail("Failed to run `git status --porcelain`, error: " .. err)
     elseif not output.status.success then
