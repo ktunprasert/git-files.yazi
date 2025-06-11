@@ -20,8 +20,9 @@ local function entry()
     ya.emit("update_files", { op = fs.op("part", { id = id, url = Url(cwd), files = {} }) })
 
     local files = {}
-    for line in output.stdout:gmatch("^%S%S?%s(.+)$") do
-        local url = cwd:join(line)
+    for line in output.stdout:gmatch("[^\r\n]+") do
+        local filename = line:match("..%s(.+)$")
+        local url = cwd:join(filename)
         local cha = fs.cha(url, true)
         if cha then
             files[#files + 1] = File { url = url, cha = cha }
