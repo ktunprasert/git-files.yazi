@@ -2,7 +2,9 @@
 
 > Basically [`vcs-files`](https://github.com/yazi-rs/plugins/tree/main/vcs-files.yazi) but with untracked using `git status`
 
-Show Git file changes in Yazi.
+Show Git file changes in Yazi which includes untracked file.
+
+![image](https://github.com/user-attachments/assets/639dc45c-c380-474c-8ea7-0b0455b299e3)
 
 ## Installation
 
